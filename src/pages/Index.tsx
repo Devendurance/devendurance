@@ -40,6 +40,7 @@ const Index = () => {
 
       <PhilosophySection />
       <WhoThisIsForSection />
+      <ServicesSection />
     </div>
   );
 };
