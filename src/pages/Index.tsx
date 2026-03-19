@@ -1,6 +1,7 @@
 import profileImage from "@/assets/profile.webp";
 import PhilosophySection from "@/components/PhilosophySection";
 import WhoThisIsForSection from "@/components/WhoThisIsForSection";
+import ServicesSection from "@/components/ServicesSection";
 
 const Index = () => {
   return (
