@@ -1,5 +1,6 @@
 import profileImage from "@/assets/profile.webp";
 import PhilosophySection from "@/components/PhilosophySection";
+import WhoThisIsForSection from "@/components/WhoThisIsForSection";
 
 const Index = () => {
   return (
@@ -37,6 +38,7 @@ const Index = () => {
       </section>
 
       <PhilosophySection />
+      <WhoThisIsForSection />
     </div>
   );
 };
