@@ -1,8 +1,9 @@
 import profileImage from "@/assets/profile.webp";
+import PhilosophySection from "@/components/PhilosophySection";
 
 const Index = () => {
   return (
-    <div className="flex min-h-screen items-center justify-center bg-background px-6">
+    <div className="bg-background">
       <div className="flex flex-col md:flex-row items-center gap-10 md:gap-16 max-w-3xl w-full">
         {/* Profile Photo */}
         <div className="shrink-0">
