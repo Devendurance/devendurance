@@ -8,15 +8,15 @@ const PhilosophySection = () => {
 
         <div className="space-y-12">
           <p className="text-foreground text-2xl md:text-3xl font-extrabold leading-snug">
-            "Most startups don't have a marketing problem. They have a clarity problem."
+            "Growth is not a tactic. It's what happens when clarity, alignment, and belief are already in place."
           </p>
 
           <p className="text-foreground text-2xl md:text-3xl font-extrabold leading-snug">
-            "Strategy without foundation is just expensive guessing."
+            "Money only amplifies what already exists. If the structure is broken, spend makes it worse."
           </p>
 
           <p className="text-foreground text-2xl md:text-3xl font-extrabold leading-snug">
-            "Get the positioning right first. Everything else follows."
+            "I don't do marketing. I build the conditions under which marketing actually works."
           </p>
         </div>
       </div>
