@@ -1,13 +1,8 @@
 const services = [
   {
-    title: "Pre-Growth Strategy",
+    title: "Pre-Launch Positioning Audit",
     description:
-      "Clarify your positioning, messaging, and audience before you spend a single dollar on marketing.",
-  },
-  {
-    title: "Foundation Audits",
-    description:
-      "A deep look at what's broken underneath — brand, offer, funnel — so you stop guessing and start building.",
+      "Before you spend a dollar, know if your structure can hold growth. Clarify your positioning, messaging, and audience before you spend a single dollar on marketing.",
   },
   {
     title: "Go-To-Market Architecture",
@@ -15,7 +10,12 @@ const services = [
       "Structure your launch or relaunch with a clear plan that connects positioning to distribution.",
   },
   {
-    title: "Advisory Retainers",
+    title: "Growth Architecture Review",
+    description:
+      "A full teardown of your current strategy. What's missing, what's broken, what's premature, what's working — so you stop guessing and start building.",
+  },
+  {
+    title: "Advisory & Consultancy Retainers",
     description:
       "Ongoing strategic guidance for founders who want a thinking partner, not just a service provider.",
   },
