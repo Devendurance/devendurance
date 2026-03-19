@@ -1,15 +1,15 @@
 const WhoThisIsForSection = () => {
   const idealClients = [
-    "Founders before their first real marketing spend",
-    "Early-stage teams building without a growth lead",
-    "Entrepreneurs who want clarity before committing budget",
-    "Builders who know something's off but can't name it",
+    "Founders building something real in Web3 and who think long-term",
+    "Early-stage team building without a growth lead",
+    "Projects who want clarity before committing budget",
+    "Teams who want structure before spend",
   ];
 
   const notFor = [
-    "Companies looking for someone to run their ads",
-    "Teams who just want more content, faster",
-    "Founders who've already scaled and need optimization",
+    "Founders looking for shortcuts",
+    "Teams that want vanity metrics",
+    "Anyone who just wants to \"go viral\"",
     "Anyone expecting results without doing the inner work",
   ];
 
