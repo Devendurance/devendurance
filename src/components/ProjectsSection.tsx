@@ -105,19 +105,19 @@ const projects = [
 ];
 
 const roleColors: Record<string, string> = {
-  "Growth Strategy": "bg-primary/10 text-primary",
-  Ambassador: "bg-muted text-muted-foreground",
-  "Content Contributor": "bg-accent text-accent-foreground",
+  "Growth Strategy": "bg-white/10 text-white",
+  Ambassador: "bg-white/10 text-neutral-400",
+  "Content Contributor": "bg-white/10 text-neutral-400",
 };
 
 const ProjectsSection = () => {
   return (
-    <section className="px-6 py-24 md:py-32">
+    <section className="px-6 py-24 md:py-32 bg-white">
       <div className="max-w-5xl mx-auto">
-        <p className="text-muted-foreground text-sm font-normal tracking-widest uppercase mb-3">
+        <p className="text-neutral-500 text-sm font-normal tracking-widest uppercase mb-3">
           Portfolio
         </p>
-        <h2 className="text-foreground text-3xl md:text-4xl font-bold mb-12">
+        <h2 className="text-neutral-900 text-3xl md:text-4xl font-bold mb-12">
           Projects I've Worked With
         </h2>
 
@@ -125,7 +125,7 @@ const ProjectsSection = () => {
           {projects.map((project) => (
             <div
               key={project.name}
-              className="group rounded-xl border border-border bg-card shadow-sm hover:shadow-md transition-shadow duration-200"
+              className="group rounded-xl border border-neutral-800 bg-neutral-950 shadow-sm hover:shadow-md transition-shadow duration-200"
             >
               {/* Logo + link */}
               <a
@@ -139,16 +139,16 @@ const ProjectsSection = () => {
                   alt={project.name}
                   className="w-14 h-14 rounded-lg object-cover"
                 />
-                <ArrowUpRight className="absolute top-5 right-5 w-4 h-4 text-muted-foreground opacity-0 group-hover:opacity-100 transition-opacity" />
+                <ArrowUpRight className="absolute top-5 right-5 w-4 h-4 text-neutral-500 opacity-0 group-hover:opacity-100 transition-opacity" />
               </a>
 
               {/* Content */}
               <div className="p-5 pt-4">
-                <h3 className="text-foreground font-semibold text-base mb-2">
+                <h3 className="text-white font-semibold text-base mb-2">
                   {project.name}
                 </h3>
                 <div className="flex flex-wrap gap-1.5 mb-3">
-                  <span className="text-xs font-medium px-2 py-0.5 rounded-full bg-muted text-muted-foreground">
+                  <span className="text-xs font-medium px-2 py-0.5 rounded-full bg-white/10 text-neutral-300">
                     {project.category}
                   </span>
                   <span
@@ -157,7 +157,7 @@ const ProjectsSection = () => {
                     {project.role}
                   </span>
                 </div>
-                <p className="text-muted-foreground text-sm leading-relaxed line-clamp-2">
+                <p className="text-neutral-400 text-sm leading-relaxed line-clamp-2">
                   {project.description}
                 </p>
               </div>
