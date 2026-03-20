@@ -139,16 +139,16 @@ const ProjectsSection = () => {
                   alt={project.name}
                   className="w-14 h-14 rounded-lg object-cover"
                 />
-                <ArrowUpRight className="absolute top-5 right-5 w-4 h-4 text-muted-foreground opacity-0 group-hover:opacity-100 transition-opacity" />
+                <ArrowUpRight className="absolute top-5 right-5 w-4 h-4 text-neutral-500 opacity-0 group-hover:opacity-100 transition-opacity" />
               </a>
 
               {/* Content */}
               <div className="p-5 pt-4">
-                <h3 className="text-foreground font-semibold text-base mb-2">
+                <h3 className="text-white font-semibold text-base mb-2">
                   {project.name}
                 </h3>
                 <div className="flex flex-wrap gap-1.5 mb-3">
-                  <span className="text-xs font-medium px-2 py-0.5 rounded-full bg-muted text-muted-foreground">
+                  <span className="text-xs font-medium px-2 py-0.5 rounded-full bg-white/10 text-neutral-300">
                     {project.category}
                   </span>
                   <span
@@ -157,7 +157,7 @@ const ProjectsSection = () => {
                     {project.role}
                   </span>
                 </div>
-                <p className="text-muted-foreground text-sm leading-relaxed line-clamp-2">
+                <p className="text-neutral-400 text-sm leading-relaxed line-clamp-2">
                   {project.description}
                 </p>
               </div>
