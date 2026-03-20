@@ -114,10 +114,10 @@ const ProjectsSection = () => {
   return (
     <section className="bg-secondary px-6 py-24 md:py-32">
       <div className="max-w-5xl mx-auto">
-        <p className="text-neutral-500 text-sm font-normal tracking-widest uppercase mb-3">
+        <p className="text-muted-foreground text-sm font-normal tracking-widest uppercase mb-3">
           Portfolio
         </p>
-        <h2 className="text-neutral-900 text-3xl md:text-4xl font-bold mb-12">
+        <h2 className="text-foreground text-3xl md:text-4xl font-bold mb-12">
           Projects I've Worked With
         </h2>
 
