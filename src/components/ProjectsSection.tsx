@@ -105,9 +105,9 @@ const projects = [
 ];
 
 const roleColors: Record<string, string> = {
-  "Growth Strategy": "bg-primary/10 text-primary",
-  Ambassador: "bg-muted text-muted-foreground",
-  "Content Contributor": "bg-accent text-accent-foreground",
+  "Growth Strategy": "bg-white/10 text-white",
+  Ambassador: "bg-white/10 text-neutral-400",
+  "Content Contributor": "bg-white/10 text-neutral-400",
 };
 
 const ProjectsSection = () => {
