@@ -112,7 +112,7 @@ const roleColors: Record<string, string> = {
 
 const ProjectsSection = () => {
   return (
-    <section className="px-6 py-24 md:py-32 bg-white">
+    <section className="bg-secondary px-6 py-24 md:py-32">
       <div className="max-w-5xl mx-auto">
         <p className="text-neutral-500 text-sm font-normal tracking-widest uppercase mb-3">
           Portfolio
