@@ -3,6 +3,7 @@ import PhilosophySection from "@/components/PhilosophySection";
 import WhoThisIsForSection from "@/components/WhoThisIsForSection";
 import ServicesSection from "@/components/ServicesSection";
 import ProjectsSection from "@/components/ProjectsSection";
+import SocialProofSection from "@/components/SocialProofSection";
 
 const Index = () => {
   return (
