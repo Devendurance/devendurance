@@ -4,6 +4,7 @@ import WhoThisIsForSection from "@/components/WhoThisIsForSection";
 import ServicesSection from "@/components/ServicesSection";
 import ProjectsSection from "@/components/ProjectsSection";
 import SocialProofSection from "@/components/SocialProofSection";
+import TweetsSection from "@/components/TweetsSection";
 
 const Index = () => {
   return (
