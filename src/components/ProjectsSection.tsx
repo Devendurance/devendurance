@@ -125,7 +125,7 @@ const ProjectsSection = () => {
           {projects.map((project) => (
             <div
               key={project.name}
-              className="group rounded-xl border border-neutral-800 bg-neutral-950 shadow-sm hover:shadow-md transition-shadow duration-200"
+              className="group rounded-xl border border-border bg-background shadow-sm hover:shadow-md transition-shadow duration-200"
             >
               {/* Logo + link */}
               <a
