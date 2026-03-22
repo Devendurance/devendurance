@@ -44,6 +44,7 @@ const Index = () => {
       <WhoThisIsForSection />
       <ServicesSection />
       <ProjectsSection />
+      <SocialProofSection />
     </div>
   );
 };
