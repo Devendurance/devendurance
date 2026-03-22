@@ -1,20 +1,28 @@
-import { useEffect, useRef } from "react";
 import { ArrowUpRight } from "lucide-react";
+
+import tweet1 from "@/assets/tweet-1.webp";
+import tweet2 from "@/assets/tweet-2.webp";
+import tweet3 from "@/assets/tweet-3.webp";
+import tweet4 from "@/assets/tweet-4.webp";
+import tweet5 from "@/assets/tweet-5.webp";
+import tweet6 from "@/assets/tweet-6.webp";
 
 type TweetCategory = "Project Breakdowns" | "Worldviews & Thoughts" | "Growth Case Studies";
 
 interface TweetItem {
-  id: string;
+  src: string;
+  alt: string;
+  link: string;
   category: TweetCategory;
 }
 
 const tweets: TweetItem[] = [
-  { id: "2032897305091911802", category: "Project Breakdowns" },
-  { id: "2033607096030429625", category: "Project Breakdowns" },
-  { id: "2032943280976179658", category: "Project Breakdowns" },
-  { id: "2033505198828576768", category: "Worldviews & Thoughts" },
-  { id: "2032777537672069174", category: "Worldviews & Thoughts" },
-  { id: "2032517680352149850", category: "Worldviews & Thoughts" },
+  { src: tweet1, alt: "XION – 1 Billion Identities breakdown", link: "https://x.com/devendyyy/status/2032897305091911802", category: "Project Breakdowns" },
+  { src: tweet2, alt: "XION – Redacted File breakdown", link: "https://x.com/devendyyy/status/2033607096030429625", category: "Project Breakdowns" },
+  { src: tweet3, alt: "Injective – AI Innovations breakdown", link: "https://x.com/devendyyy/status/2032943280976179658", category: "Project Breakdowns" },
+  { src: tweet4, alt: "Alignment over persuasion", link: "https://x.com/devendyyy/status/2033505198828576768", category: "Worldviews & Thoughts" },
+  { src: tweet5, alt: "A blockchain is not a product", link: "https://x.com/devendyyy/status/2032777537672069174", category: "Worldviews & Thoughts" },
+  { src: tweet6, alt: "Fear, Pain, Desire, Convenience", link: "https://x.com/devendyyy/status/2032517680352149850", category: "Worldviews & Thoughts" },
 ];
 
 const categoryColors: Record<TweetCategory, string> = {
@@ -23,38 +31,7 @@ const categoryColors: Record<TweetCategory, string> = {
   "Growth Case Studies": "bg-green-500/15 text-green-400",
 };
 
-const TweetEmbed = ({ tweetId }: { tweetId: string }) => {
-  const ref = useRef<HTMLDivElement>(null);
-
-  useEffect(() => {
-    if (ref.current && (window as any).twttr?.widgets) {
-      ref.current.innerHTML = "";
-      (window as any).twttr.widgets.createTweet(tweetId, ref.current, {
-        theme: "dark",
-        dnt: true,
-        conversation: "none",
-      });
-    }
-  }, [tweetId]);
-
-  return (
-    <div ref={ref} className="min-h-[200px] flex items-center justify-center">
-      <div className="text-muted-foreground text-sm">Loading tweet…</div>
-    </div>
-  );
-};
-
 const TweetsSection = () => {
-  useEffect(() => {
-    if (!(window as any).twttr) {
-      const script = document.createElement("script");
-      script.src = "https://platform.twitter.com/widgets.js";
-      script.async = true;
-      script.charset = "utf-8";
-      document.head.appendChild(script);
-    }
-  }, []);
-
   const grouped = tweets.reduce<Record<TweetCategory, TweetItem[]>>(
     (acc, tweet) => {
       acc[tweet.category].push(tweet);
@@ -101,12 +78,15 @@ const TweetsSection = () => {
               </div>
               <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
                 {items.map((tweet) => (
-                  <div
-                    key={tweet.id}
-                    className="rounded-lg border border-border bg-background overflow-hidden"
+                  <a
+                    key={tweet.link}
+                    href={tweet.link}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="block rounded-lg border border-border bg-background overflow-hidden hover:border-primary/40 transition-colors"
                   >
-                    <TweetEmbed tweetId={tweet.id} />
-                  </div>
+                    <img src={tweet.src} alt={tweet.alt} className="w-full h-auto block" />
+                  </a>
                 ))}
               </div>
             </div>
