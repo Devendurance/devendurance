@@ -1,3 +1,4 @@
+import { useState } from "react";
 import aptosContentTestimonial from "@/assets/aptos-content-testimonial.webp";
 import xionReachout from "@/assets/xion-reachout.webp";
 import merlinMarketsTestimonial from "@/assets/merlin-markets-testimonial.webp";
@@ -24,41 +25,68 @@ const categoryColors: Record<string, string> = {
 };
 
 const SocialProofSection = () => {
-  return (
-    <section className="bg-secondary px-6 py-24 md:py-32">
-      <div className="max-w-6xl mx-auto">
-        <p className="text-muted-foreground text-sm font-normal tracking-widest uppercase mb-3">
-          Social Proof
-        </p>
-        <h2 className="text-foreground text-3xl md:text-4xl font-bold mb-12">
-          What People Are Saying
-        </h2>
+  const [selectedImage, setSelectedImage] = useState<ProofItem | null>(null);
 
-        {/* Masonry grid */}
-        <div className="columns-1 sm:columns-2 lg:columns-3 gap-4 space-y-4">
-          {proofItems.map((item, index) => (
-            <div
-              key={index}
-              className="break-inside-avoid rounded-lg border border-border bg-background overflow-hidden shadow-sm"
-            >
-              <img
-                src={item.src}
-                alt={item.alt}
-                className="w-full h-auto block"
-                loading="lazy"
-              />
-              <div className="px-3 py-2">
-                <span
-                  className={`inline-block text-xs font-medium px-2 py-0.5 rounded-full ${categoryColors[item.category]}`}
-                >
-                  {item.category}
-                </span>
+  return (
+    <>
+      <section className="bg-secondary px-6 py-24 md:py-32">
+        <div className="max-w-6xl mx-auto">
+          <p className="text-muted-foreground text-sm font-normal tracking-widest uppercase mb-3">
+            Social Proof
+          </p>
+          <h2 className="text-foreground text-3xl md:text-4xl font-bold mb-12">
+            What People Are Saying
+          </h2>
+
+          {/* Masonry grid */}
+          <div className="columns-1 sm:columns-2 lg:columns-3 gap-4 space-y-4">
+            {proofItems.map((item, index) => (
+              <div
+                key={index}
+                className="break-inside-avoid rounded-lg border border-border bg-background overflow-hidden shadow-sm cursor-pointer hover:shadow-md transition-shadow"
+                onClick={() => setSelectedImage(item)}
+              >
+                <img
+                  src={item.src}
+                  alt={item.alt}
+                  className="w-full h-auto block"
+                  loading="lazy"
+                />
+                <div className="px-3 py-2">
+                  <span
+                    className={`inline-block text-xs font-medium px-2 py-0.5 rounded-full ${categoryColors[item.category]}`}
+                  >
+                    {item.category}
+                  </span>
+                </div>
               </div>
-            </div>
-          ))}
+            ))}
+          </div>
         </div>
-      </div>
-    </section>
+      </section>
+
+      {/* Lightbox */}
+      {selectedImage && (
+        <div
+          className="fixed inset-0 z-50 flex items-center justify-center bg-black/80 backdrop-blur-sm p-4 cursor-pointer"
+          onClick={() => setSelectedImage(null)}
+        >
+          <button
+            className="absolute top-4 right-4 text-white/80 hover:text-white text-3xl font-light leading-none"
+            onClick={() => setSelectedImage(null)}
+            aria-label="Close"
+          >
+            ✕
+          </button>
+          <img
+            src={selectedImage.src}
+            alt={selectedImage.alt}
+            className="max-w-full max-h-[90vh] rounded-lg object-contain"
+            onClick={(e) => e.stopPropagation()}
+          />
+        </div>
+      )}
+    </>
   );
 };
 
