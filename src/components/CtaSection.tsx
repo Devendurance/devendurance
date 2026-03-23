@@ -2,10 +2,10 @@ const CtaSection = () => {
   return (
     <section className="w-full py-24 px-6" style={{ background: "hsl(0 0% 8%)" }}>
       <div className="max-w-2xl mx-auto text-center">
-        <h2 className="text-background text-3xl sm:text-4xl md:text-5xl font-extrabold leading-tight mb-4">
+        <h2 className="text-3xl sm:text-4xl md:text-5xl font-extrabold leading-tight mb-4" style={{ color: "hsl(0 0% 98%)" }}>
           Let's talk before you spend.
         </h2>
-        <p className="text-background/60 text-base md:text-lg mb-10">
+        <p className="text-base md:text-lg mb-10" style={{ color: "hsl(0 0% 70%)" }}>
           One conversation could save you months of wasted budget.
         </p>
         <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
