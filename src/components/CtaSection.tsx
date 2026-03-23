@@ -1,6 +1,6 @@
 const CtaSection = () => {
   return (
-    <section className="w-full bg-foreground py-24 px-6">
+    <section className="w-full py-24 px-6" style={{ background: "hsl(0 0% 8%)" }}>
       <div className="max-w-2xl mx-auto text-center">
         <h2 className="text-background text-3xl sm:text-4xl md:text-5xl font-extrabold leading-tight mb-4">
           Let's talk before you spend.
