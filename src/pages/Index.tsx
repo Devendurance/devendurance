@@ -6,6 +6,7 @@ import ServicesSection from "@/components/ServicesSection";
 import ProjectsSection from "@/components/ProjectsSection";
 import SocialProofSection from "@/components/SocialProofSection";
 import TweetsSection from "@/components/TweetsSection";
+import CtaSection from "@/components/CtaSection";
 
 const Index = () => {
   return (
