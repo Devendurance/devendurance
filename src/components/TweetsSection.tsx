@@ -7,7 +7,7 @@ import tweet4 from "@/assets/tweet-4.webp";
 import tweet5 from "@/assets/tweet-5.webp";
 import tweet6 from "@/assets/tweet-6.webp";
 
-type TweetCategory = "Project Breakdowns" | "Worldviews & Views" | "Growth Case Studies";
+type TweetCategory = "Project Breakdowns" | "Worldviews & Opinions" | "Growth Case Studies";
 
 interface TweetItem {
   src: string;
@@ -20,14 +20,14 @@ const tweets: TweetItem[] = [
   { src: tweet1, alt: "XION – 1 Billion Identities breakdown", link: "https://x.com/devendyyy/status/2032897305091911802", category: "Project Breakdowns" },
   { src: tweet2, alt: "XION – Redacted File breakdown", link: "https://x.com/devendyyy/status/2033607096030429625", category: "Project Breakdowns" },
   { src: tweet3, alt: "Injective – AI Innovations breakdown", link: "https://x.com/devendyyy/status/2032943280976179658", category: "Project Breakdowns" },
-  { src: tweet4, alt: "Alignment over persuasion", link: "https://x.com/devendyyy/status/2033505198828576768", category: "Worldviews & Views" },
-  { src: tweet5, alt: "A blockchain is not a product", link: "https://x.com/devendyyy/status/2032777537672069174", category: "Worldviews & Views" },
-  { src: tweet6, alt: "Fear, Pain, Desire, Convenience", link: "https://x.com/devendyyy/status/2032517680352149850", category: "Worldviews & Views" },
+  { src: tweet4, alt: "Alignment over persuasion", link: "https://x.com/devendyyy/status/2033505198828576768", category: "Worldviews & Opinions" },
+  { src: tweet5, alt: "A blockchain is not a product", link: "https://x.com/devendyyy/status/2032777537672069174", category: "Worldviews & Opinions" },
+  { src: tweet6, alt: "Fear, Pain, Desire, Convenience", link: "https://x.com/devendyyy/status/2032517680352149850", category: "Worldviews & Opinions" },
 ];
 
 const categoryColors: Record<TweetCategory, string> = {
   "Project Breakdowns": "bg-primary/15 text-primary",
-  "Worldviews & Views": "bg-accent text-accent-foreground",
+  "Worldviews & Opinions": "bg-accent text-accent-foreground",
   "Growth Case Studies": "bg-green-500/15 text-green-400",
 };
 
@@ -39,7 +39,7 @@ const TweetsSection = () => {
     },
     {
       "Project Breakdowns": [],
-      "Worldviews & Views": [],
+      "Worldviews & Opinions": [],
       "Growth Case Studies": [],
     }
   );
