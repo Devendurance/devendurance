@@ -1,4 +1,6 @@
 import { ArrowUpRight } from "lucide-react";
+import { useState } from "react";
+import { useReveal } from "@/hooks/useReveal";
 
 import injectiveLogo from "@/assets/projects/injective.webp";
 import xionLogo from "@/assets/projects/xion.webp";
@@ -105,15 +107,23 @@ const projects = [
 ];
 
 const roleColors: Record<string, string> = {
-  "Growth Strategy": "bg-white/10 text-white",
-  Ambassador: "bg-white/10 text-neutral-400",
-  "Content Contributor": "bg-white/10 text-neutral-400",
+  "Growth Strategy": "bg-primary/10 text-primary",
+  Ambassador: "bg-muted text-muted-foreground",
+  "Content Contributor": "bg-muted text-muted-foreground",
 };
 
 const ProjectsSection = () => {
+  const [expanded, setExpanded] = useState<string | null>(null);
+  const { ref, visible } = useReveal();
+
   return (
     <section className="bg-secondary px-6 py-24 md:py-32">
-      <div className="max-w-5xl mx-auto">
+      <div
+        ref={ref}
+        className={`max-w-5xl mx-auto transition-all duration-700 ${
+          visible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-6"
+        }`}
+      >
         <p className="text-muted-foreground text-sm font-normal tracking-widest uppercase mb-3">
           Portfolio
         </p>
@@ -122,47 +132,64 @@ const ProjectsSection = () => {
         </h2>
 
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
-          {projects.map((project) => (
-            <div
-              key={project.name}
-              className="group rounded-xl border border-border bg-background shadow-sm hover:shadow-md transition-shadow duration-200"
-            >
-              {/* Logo + link */}
-              <a
-                href={project.link}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="relative block p-5 pb-0"
+          {projects.map((project) => {
+            const isExpanded = expanded === project.name;
+            return (
+              <div
+                key={project.name}
+                className="group rounded-xl border border-border bg-background shadow-sm hover:shadow-md transition-shadow duration-200"
               >
-                <img
-                  src={project.logo}
-                  alt={project.name}
-                  className="w-14 h-14 rounded-lg object-cover"
-                />
-                <ArrowUpRight className="absolute top-5 right-5 w-4 h-4 text-neutral-500 opacity-0 group-hover:opacity-100 transition-opacity" />
-              </a>
+                {/* Logo + link */}
+                <a
+                  href={project.link}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="relative block p-5 pb-0"
+                >
+                  <img
+                    src={project.logo}
+                    alt={project.name}
+                    className="w-14 h-14 rounded-lg object-cover"
+                  />
+                  <ArrowUpRight className="absolute top-5 right-5 w-4 h-4 text-muted-foreground opacity-0 group-hover:opacity-100 transition-opacity" />
+                </a>
 
-              {/* Content */}
-              <div className="p-5 pt-4">
-                <h3 className="text-white font-semibold text-base mb-2">
-                  {project.name}
-                </h3>
-                <div className="flex flex-wrap gap-1.5 mb-3">
-                  <span className="text-xs font-medium px-2 py-0.5 rounded-full bg-white/10 text-neutral-300">
-                    {project.category}
-                  </span>
-                  <span
-                    className={`text-xs font-medium px-2 py-0.5 rounded-full ${roleColors[project.role]}`}
+                {/* Content */}
+                <div className="p-5 pt-4">
+                  <h3 className="text-foreground font-semibold text-base mb-2">
+                    {project.name}
+                  </h3>
+                  <div className="flex flex-wrap gap-1.5 mb-3">
+                    <span className="text-xs font-medium px-2 py-0.5 rounded-full bg-muted text-muted-foreground">
+                      {project.category}
+                    </span>
+                    <span
+                      className={`text-xs font-medium px-2 py-0.5 rounded-full ${roleColors[project.role]}`}
+                    >
+                      {project.role}
+                    </span>
+                  </div>
+                  <p
+                    className={`text-muted-foreground text-sm leading-relaxed ${
+                      isExpanded ? "" : "line-clamp-2"
+                    }`}
                   >
-                    {project.role}
-                  </span>
+                    {project.description}
+                  </p>
+                  {project.description.length > 90 && (
+                    <button
+                      onClick={() =>
+                        setExpanded(isExpanded ? null : project.name)
+                      }
+                      className="text-primary text-xs mt-1 hover:underline"
+                    >
+                      {isExpanded ? "Show less" : "Read more"}
+                    </button>
+                  )}
                 </div>
-                <p className="text-neutral-400 text-sm leading-relaxed line-clamp-2">
-                  {project.description}
-                </p>
               </div>
-            </div>
-          ))}
+            );
+          })}
         </div>
       </div>
     </section>

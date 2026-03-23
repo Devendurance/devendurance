@@ -1,4 +1,8 @@
+import { useReveal } from "@/hooks/useReveal";
+
 const WhoThisIsForSection = () => {
+  const { ref, visible } = useReveal();
+
   const idealClients = [
     "Founders building something real in Web3 and who think long-term",
     "Early-stage team building without a growth lead",
@@ -9,20 +13,25 @@ const WhoThisIsForSection = () => {
   const notFor = [
     "Founders looking for shortcuts",
     "Teams that want vanity metrics",
-    "Anyone who just wants to \"go viral\"",
+    'Anyone who just wants to "go viral"',
     "Anyone expecting results without doing the inner work",
   ];
 
   return (
     <section className="bg-secondary py-24 px-6">
-      <div className="max-w-4xl mx-auto">
+      <div
+        ref={ref}
+        className={`max-w-4xl mx-auto transition-all duration-700 ${
+          visible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-6"
+        }`}
+      >
         <h2 className="text-muted-foreground text-sm font-normal tracking-widest uppercase text-center mb-16">
           Who This Is For
         </h2>
 
-        <div className="grid md:grid-cols-2 gap-8">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
           {/* Ideal Clients */}
-          <div className="bg-background rounded-md border border-border p-8">
+          <div className="bg-background rounded-md border border-border p-6 sm:p-8">
             <h3 className="text-foreground text-lg font-extrabold mb-6">
               This is for you if…
             </h3>
@@ -37,7 +46,7 @@ const WhoThisIsForSection = () => {
           </div>
 
           {/* Not For */}
-          <div className="bg-background rounded-md border border-border p-8">
+          <div className="bg-background rounded-md border border-border p-6 sm:p-8">
             <h3 className="text-foreground text-lg font-extrabold mb-6">
               This is not for you if…
             </h3>
