@@ -21,7 +21,8 @@ const CtaSection = () => {
             href="https://x.com/devendyyy"
             target="_blank"
             rel="noopener noreferrer"
-            className="inline-block border border-background/20 text-background font-medium text-sm px-8 py-3 rounded-md hover:bg-background/10 transition-colors"
+            className="inline-block border font-medium text-sm px-8 py-3 rounded-md transition-colors"
+            style={{ color: "hsl(0 0% 98%)", borderColor: "hsl(0 0% 30%)" }}
           >
             Follow on X
           </a>
