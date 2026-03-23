@@ -29,12 +29,9 @@ const ServicesSection = () => {
           Services
         </h2>
 
-        <div className="grid md:grid-cols-2 gap-6">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
           {services.map((service, i) => (
-            <div
-              key={i}
-              className="rounded-md border border-border p-8"
-            >
+            <div key={i} className="rounded-md border border-border p-6 sm:p-8">
               <h3 className="text-foreground text-lg font-extrabold mb-3">
                 {service.title}
               </h3>
