@@ -6,6 +6,7 @@ import ServicesSection from "@/components/ServicesSection";
 import ProjectsSection from "@/components/ProjectsSection";
 import SocialProofSection from "@/components/SocialProofSection";
 import TweetsSection from "@/components/TweetsSection";
+import CtaSection from "@/components/CtaSection";
 
 const Index = () => {
   return (
@@ -50,6 +51,7 @@ const Index = () => {
       <div id="projects"><ProjectsSection /></div>
       <div id="social-proof"><SocialProofSection /></div>
       <div id="tweets"><TweetsSection /></div>
+      <CtaSection />
     </div>
   );
 };
