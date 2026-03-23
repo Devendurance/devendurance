@@ -51,6 +51,7 @@ const Index = () => {
       <div id="projects"><ProjectsSection /></div>
       <div id="social-proof"><SocialProofSection /></div>
       <div id="tweets"><TweetsSection /></div>
+      <CtaSection />
     </div>
   );
 };
