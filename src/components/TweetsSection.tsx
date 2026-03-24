@@ -1,4 +1,5 @@
-import { ArrowUpRight } from "lucide-react";
+import { useState, useRef, useEffect } from "react";
+import { ArrowUpRight, ChevronLeft, ChevronRight } from "lucide-react";
 
 import tweet1 from "@/assets/tweet-1.webp";
 import tweet2 from "@/assets/tweet-2.webp";
@@ -29,6 +30,82 @@ const categoryColors: Record<TweetCategory, string> = {
   "Project Breakdowns": "bg-primary/15 text-primary",
   "Worldviews & Opinions": "bg-accent text-accent-foreground",
   "Growth Case Studies": "bg-green-500/15 text-green-400",
+};
+
+const CategoryCarousel = ({ category, items }: { category: TweetCategory; items: TweetItem[] }) => {
+  const scrollRef = useRef<HTMLDivElement>(null);
+  const [canScrollLeft, setCanScrollLeft] = useState(false);
+  const [canScrollRight, setCanScrollRight] = useState(false);
+
+  const checkScroll = () => {
+    const el = scrollRef.current;
+    if (!el) return;
+    setCanScrollLeft(el.scrollLeft > 4);
+    setCanScrollRight(el.scrollLeft < el.scrollWidth - el.clientWidth - 4);
+  };
+
+  useEffect(() => {
+    checkScroll();
+    const el = scrollRef.current;
+    el?.addEventListener("scroll", checkScroll, { passive: true });
+    window.addEventListener("resize", checkScroll);
+    return () => {
+      el?.removeEventListener("scroll", checkScroll);
+      window.removeEventListener("resize", checkScroll);
+    };
+  }, []);
+
+  const scroll = (dir: "left" | "right") => {
+    const el = scrollRef.current;
+    if (!el) return;
+    const cardWidth = el.querySelector("a")?.offsetWidth ?? 300;
+    el.scrollBy({ left: dir === "left" ? -cardWidth - 16 : cardWidth + 16, behavior: "smooth" });
+  };
+
+  return (
+    <div>
+      <div className="flex items-center justify-between mb-5">
+        <span className={`inline-block text-xs font-medium px-3 py-1 rounded-full ${categoryColors[category]}`}>
+          {category}
+        </span>
+        <div className="flex items-center gap-2">
+          <button
+            onClick={() => scroll("left")}
+            disabled={!canScrollLeft}
+            className="p-1.5 rounded-full border border-border bg-background text-muted-foreground hover:text-foreground hover:border-primary/40 transition-colors disabled:opacity-30 disabled:cursor-not-allowed"
+            aria-label="Scroll left"
+          >
+            <ChevronLeft className="w-4 h-4" />
+          </button>
+          <button
+            onClick={() => scroll("right")}
+            disabled={!canScrollRight}
+            className="p-1.5 rounded-full border border-border bg-background text-muted-foreground hover:text-foreground hover:border-primary/40 transition-colors disabled:opacity-30 disabled:cursor-not-allowed"
+            aria-label="Scroll right"
+          >
+            <ChevronRight className="w-4 h-4" />
+          </button>
+        </div>
+      </div>
+      <div
+        ref={scrollRef}
+        className="flex gap-4 overflow-x-auto scrollbar-hide snap-x snap-mandatory pb-2"
+        style={{ scrollbarWidth: "none", msOverflowStyle: "none" }}
+      >
+        {items.map((tweet) => (
+          <a
+            key={tweet.link}
+            href={tweet.link}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="flex-shrink-0 w-[280px] sm:w-[300px] snap-start rounded-lg border border-border bg-background overflow-hidden hover:border-primary/40 transition-colors"
+          >
+            <img src={tweet.src} alt={tweet.alt} className="w-full h-auto block" loading="lazy" />
+          </a>
+        ))}
+      </div>
+    </div>
+  );
 };
 
 const TweetsSection = () => {
@@ -66,31 +143,39 @@ const TweetsSection = () => {
           </a>
         </div>
 
-        <div className="space-y-16">
+        <div className="space-y-14">
           {activeCategories.map(([category, items]) => (
-            <div key={category}>
-              <div className="flex items-center gap-3 mb-6">
-                <span
-                  className={`inline-block text-xs font-medium px-3 py-1 rounded-full ${categoryColors[category]}`}
-                >
-                  {category}
-                </span>
-              </div>
-              <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4">
-                {items.map((tweet) => (
-                  <a
-                    key={tweet.link}
-                    href={tweet.link}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="block rounded-lg border border-border bg-background overflow-hidden hover:border-primary/40 transition-colors"
-                  >
-                    <img src={tweet.src} alt={tweet.alt} className="w-full h-auto block" loading="lazy" />
-                  </a>
-                ))}
-              </div>
-            </div>
+            <CategoryCarousel key={category} category={category} items={items} />
           ))}
+        </div>
+
+        {/* Substack Section */}
+        <div className="mt-16 pt-14 border-t border-border">
+          <div className="flex items-center gap-3 mb-6">
+            <span className="inline-block text-xs font-medium px-3 py-1 rounded-full bg-primary/15 text-primary">
+              From the Newsletter
+            </span>
+          </div>
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+            {/* Placeholder cards — replace with your actual Substack posts */}
+            <a
+              href="https://substack.com"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="block rounded-lg border border-border bg-background p-5 hover:border-primary/40 transition-colors group"
+            >
+              <p className="text-xs text-muted-foreground uppercase tracking-wider mb-2">Substack</p>
+              <h3 className="text-foreground font-semibold text-base mb-2 group-hover:text-primary transition-colors">
+                Coming Soon — Your First Post Title
+              </h3>
+              <p className="text-muted-foreground text-sm leading-relaxed line-clamp-2">
+                Share your Substack post links and I'll add them here as preview cards.
+              </p>
+            </a>
+          </div>
+          <p className="text-muted-foreground text-xs mt-4 italic">
+            Share your Substack URL and post links to populate this section.
+          </p>
         </div>
       </div>
     </section>
