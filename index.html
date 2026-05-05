@@ -5,7 +5,16 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;800&display=swap" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+    <script>
+      (function () {
+        try {
+          var stored = localStorage.getItem('theme');
+          var isDark = stored ? stored === 'dark' : true;
+          if (isDark) document.documentElement.classList.add('dark');
+        } catch (e) {}
+      })();
+    </script>
     <script defer src="https://cloud.umami.is/script.js" data-website-id="c30b9b49-c02c-4a37-93f2-59c2a7a344ac"></script>
     <title>Endurance — Pre-Growth Strategist for Web3 Founders</title>
     <meta name="description" content="I work with Web3 founders before they spend on marketing, so when they do, it actually works. ICP clarity, Positioning, narrative, and earned growth.">
