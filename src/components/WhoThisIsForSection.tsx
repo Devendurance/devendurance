@@ -1,7 +1,7 @@
 import { useReveal } from "@/hooks/useReveal";
 
 const WhoThisIsForSection = () => {
-  const { ref, visible } = useReveal();
+  const { ref, className } = useReveal();
 
   const idealClients = [
     "Founders building something real in Web3 and who think long-term",
@@ -18,42 +18,35 @@ const WhoThisIsForSection = () => {
   ];
 
   return (
-    <section className="bg-secondary py-24 px-6">
-      <div
-        ref={ref}
-        className={`max-w-4xl mx-auto transition-all duration-700 ${
-          visible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-6"
-        }`}
-      >
-        <h2 className="text-muted-foreground text-sm font-normal tracking-widest uppercase text-center mb-16">
+    <section className="py-24 md:py-32 px-6 bg-background">
+      <div ref={ref} className={`max-w-5xl mx-auto ${className}`}>
+        <p className="text-muted-foreground text-xs font-medium tracking-[0.2em] uppercase text-center mb-12">
           Who This Is For
-        </h2>
+        </p>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-          {/* Ideal Clients */}
-          <div className="bg-background rounded-md border border-border p-6 sm:p-8">
-            <h3 className="text-foreground text-lg font-extrabold mb-6">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
+          <div className="bg-card rounded-2xl border border-border p-7 sm:p-9">
+            <h3 className="text-foreground text-xl font-bold mb-6">
               This is for you if…
             </h3>
             <ul className="space-y-4">
               {idealClients.map((item, i) => (
                 <li key={i} className="flex items-start gap-3">
-                  <span className="text-green-500 text-lg leading-6 shrink-0">✓</span>
+                  <span className="text-primary text-lg leading-6 shrink-0">✓</span>
                   <span className="text-muted-foreground text-sm leading-relaxed">{item}</span>
                 </li>
               ))}
             </ul>
           </div>
 
-          {/* Not For */}
-          <div className="bg-background rounded-md border border-border p-6 sm:p-8">
-            <h3 className="text-foreground text-lg font-extrabold mb-6">
+          <div className="bg-card rounded-2xl border border-border p-7 sm:p-9">
+            <h3 className="text-foreground text-xl font-bold mb-6">
               This is not for you if…
             </h3>
             <ul className="space-y-4">
               {notFor.map((item, i) => (
                 <li key={i} className="flex items-start gap-3">
-                  <span className="text-red-500 text-lg leading-6 shrink-0">✗</span>
+                  <span className="text-destructive text-lg leading-6 shrink-0">✗</span>
                   <span className="text-muted-foreground text-sm leading-relaxed">{item}</span>
                 </li>
               ))}

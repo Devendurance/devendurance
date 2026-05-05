@@ -1,24 +1,31 @@
+import AutoplayCarousel from "./AutoplayCarousel";
+import { useReveal } from "@/hooks/useReveal";
+
+const statements = [
+  "Growth is not a tactic. It's what happens when clarity, alignment, and belief are already in place.",
+  "Money only amplifies what already exists. If the structure is broken, spend makes it worse.",
+  "I don't do marketing. I build the conditions under which marketing actually works.",
+];
+
 const PhilosophySection = () => {
+  const { ref, className } = useReveal();
+
   return (
-    <section className="bg-background py-24 px-6">
-      <div className="max-w-2xl mx-auto space-y-16 text-center">
-        <h2 className="text-muted-foreground text-sm font-normal tracking-widest uppercase">
+    <section className="py-24 md:py-32 px-6 bg-background">
+      <div ref={ref} className={`max-w-3xl mx-auto ${className}`}>
+        <p className="text-muted-foreground text-xs font-medium tracking-[0.2em] uppercase text-center mb-12">
           How I Think
-        </h2>
-
-        <div className="space-y-12">
-          <p className="text-foreground text-2xl md:text-3xl font-extrabold leading-snug">
-            "Growth is not a tactic. It's what happens when clarity, alignment, and belief are already in place."
-          </p>
-
-          <p className="text-foreground text-2xl md:text-3xl font-extrabold leading-snug">
-            "Money only amplifies what already exists. If the structure is broken, spend makes it worse."
-          </p>
-
-          <p className="text-foreground text-2xl md:text-3xl font-extrabold leading-snug">
-            "I don't do marketing. I build the conditions under which marketing actually works."
-          </p>
-        </div>
+        </p>
+        <AutoplayCarousel
+          items={statements.map((s, i) => (
+            <div key={i} className="px-4 text-center">
+              <p className="text-foreground text-2xl md:text-4xl font-bold leading-tight tracking-tight">
+                "{s}"
+              </p>
+            </div>
+          ))}
+          interval={5000}
+        />
       </div>
     </section>
   );
