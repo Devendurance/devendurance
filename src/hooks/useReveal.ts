@@ -20,5 +20,5 @@ export function useReveal(threshold = 0.15) {
     return () => observer.disconnect();
   }, [threshold]);
 
-  return { ref, visible };
+  return { ref, visible, className: `reveal ${visible ? "is-visible" : ""}` };
 }
