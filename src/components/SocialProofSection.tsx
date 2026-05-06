@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { useReveal } from "@/hooks/useReveal";
+import AutoplayCarousel from "./AutoplayCarousel";
 import aptosContentTestimonial from "@/assets/aptos-content-testimonial.webp";
 import xionReachout from "@/assets/xion-reachout.webp";
 import merlinMarketsTestimonial from "@/assets/merlin-markets-testimonial.webp";
@@ -27,7 +28,7 @@ const SocialProofSection = () => {
   return (
     <>
       <section className="bg-background px-6 py-24 md:py-32">
-        <div ref={ref} className={`max-w-6xl mx-auto ${className}`}>
+        <div ref={ref} className={`max-w-3xl mx-auto ${className}`}>
           <p className="text-muted-foreground text-xs font-medium tracking-[0.2em] uppercase mb-3 text-center">
             Social Proof
           </p>
@@ -35,12 +36,13 @@ const SocialProofSection = () => {
             What People Are Saying
           </h2>
 
-          <div className="columns-1 sm:columns-2 lg:columns-3 gap-4 space-y-4">
-            {proofItems.map((item, index) => (
+          <AutoplayCarousel
+            interval={5000}
+            items={proofItems.map((item, index) => (
               <button
                 key={index}
                 onClick={() => setSelected(item)}
-                className="block w-full break-inside-avoid rounded-2xl border border-border bg-card overflow-hidden text-left hover:border-primary/40 transition-colors"
+                className="block w-full max-w-md mx-auto rounded-2xl border border-border bg-card overflow-hidden text-left hover:border-primary/40 transition-colors"
               >
                 <img src={item.src} alt={item.alt} className="w-full h-auto block" loading="lazy" />
                 <div className="px-3 py-2.5">
@@ -50,7 +52,7 @@ const SocialProofSection = () => {
                 </div>
               </button>
             ))}
-          </div>
+          />
         </div>
       </section>
 
