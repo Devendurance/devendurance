@@ -67,7 +67,7 @@ const SubstackSection = () => {
               Newsletter
             </p>
             <h2 className="text-foreground text-3xl md:text-4xl font-bold tracking-tight">
-              The Endy Letter
+              Endy's Unfiltered Thoughts
             </h2>
           </div>
           <div className="hidden sm:flex items-center gap-2 shrink-0">
