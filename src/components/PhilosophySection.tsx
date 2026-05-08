@@ -62,7 +62,7 @@ const PhilosophySection = () => {
                     aria-hidden="true"
                   />
                 )}
-                <h3 className="font-herotenn text-2xl md:text-3xl font-bold mb-4 tracking-tight">
+                <h3 className="text-2xl md:text-3xl font-bold mb-4 tracking-tight">
                   {s.title}
                 </h3>
                 <p className="text-muted-foreground text-base md:text-lg leading-relaxed">
