@@ -55,6 +55,16 @@
     --surface: 0 0% 100%;
 
     --radius: 0.625rem;
+
+    --teal: 172 80% 40%;
+    --royal: 217 91% 60%;
+    --mint: 160 70% 75%;
+    --pastel-blue: 217 90% 85%;
+    --mesh-1: hsl(var(--pastel-blue) / 0.25);
+    --mesh-2: hsl(var(--mint) / 0.22);
+    --base-bg: 210 40% 98%;
+    --glass-border: linear-gradient(135deg, hsl(0 0% 100% / 0.5) 0%, hsl(0 0% 100% / 0.1) 40%, transparent 100%);
+    --glass-glow: 0 0 0 1px hsl(0 0% 100% / 0.04), inset 0 1px 0 0 hsl(0 0% 100% / 0.5), 0 8px 32px -12px hsl(217 91% 60% / 0.2);
   }
 
   .dark {
