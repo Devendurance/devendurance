@@ -20,15 +20,17 @@ const Index = () => {
         className="relative flex min-h-screen items-center justify-center px-6 pt-24 pb-12"
       >
         <div className="max-w-2xl w-full text-center flex flex-col items-center">
-          <img
-            src={profileImage}
-            alt="Endy"
-            className="w-28 h-28 sm:w-32 sm:h-32 rounded-full object-cover border border-border mb-8"
-          />
+          <div className="pfp-ring mb-8">
+            <img
+              src={profileImage}
+              alt="Endy"
+              className="w-28 h-28 sm:w-32 sm:h-32 rounded-full object-cover block"
+            />
+          </div>
           <p className="text-muted-foreground text-xs font-medium tracking-[0.2em] uppercase mb-4">
             Pre-Growth Strategist
           </p>
-          <h1 className="text-foreground text-5xl sm:text-6xl md:text-7xl font-extrabold leading-[1.05] tracking-tight mb-6">
+          <h1 className="text-foreground text-5xl sm:text-6xl md:text-7xl font-extrabold leading-[1.05] tracking-tight mb-6 text-glow">
             Endy.
           </h1>
           <p className="text-muted-foreground text-base md:text-lg leading-relaxed mb-10 max-w-lg">
@@ -39,7 +41,7 @@ const Index = () => {
               href="https://solo.to/devendurance"
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-block bg-primary text-primary-foreground font-semibold text-sm px-7 py-3 rounded-full hover:opacity-90 transition-opacity"
+              className="btn-gradient inline-block font-semibold text-sm px-7 py-3 rounded-full"
             >
               Work With Me
             </a>
