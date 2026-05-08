@@ -2,7 +2,7 @@ import { useEffect, useState, useRef, ReactNode } from "react";
 
 interface AutoplayCarouselProps {
   items: ReactNode[];
-  interval?: number;
+  interval?: number | number[];
   className?: string;
   cardClassName?: string;
 }
@@ -19,13 +19,16 @@ const AutoplayCarousel = ({
 
   useEffect(() => {
     if (paused || items.length <= 1) return;
-    timerRef.current = window.setInterval(() => {
+    const delay = Array.isArray(interval)
+      ? interval[index] ?? 5000
+      : interval;
+    timerRef.current = window.setTimeout(() => {
       setIndex((i) => (i + 1) % items.length);
-    }, interval);
+    }, delay);
     return () => {
-      if (timerRef.current) window.clearInterval(timerRef.current);
+      if (timerRef.current) window.clearTimeout(timerRef.current);
     };
-  }, [paused, interval, items.length]);
+  }, [paused, interval, items.length, index]);
 
   return (
     <div

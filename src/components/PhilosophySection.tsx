@@ -71,7 +71,7 @@ const PhilosophySection = () => {
               </div>
             )
           )}
-          interval={5000}
+          interval={slides.map((s) => (s.kind === "card" ? 15000 : 5000))}
         />
       </div>
     </section>
