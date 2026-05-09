@@ -21,9 +21,9 @@ interface TweetItem {
 }
 
 const breakdowns: TweetItem[] = [
-  { src: tweet7, alt: "The attention economy is broken — XION & EarnOS breakdown", link: "https://x.com/i/status/2048883722699575445" },
+  { src: tweet7, alt: "The attention economy is broken — XION & EarnOS breakdown", link: "https://x.com/i/status/2046349037142724670" },
   { src: tweet8, alt: "XION Global Impact Accelerator breakdown", link: "https://x.com/i/status/2043760640485945477" },
-  { src: tweet9, alt: "XION Weekly Recap breakdown", link: "https://x.com/i/status/2046349037142724670" },
+  { src: tweet9, alt: "XION Weekly Recap breakdown", link: "https://x.com/i/status/2048883722699575445" },
   { src: tweet1, alt: "XION – 1 Billion Identities breakdown", link: "https://x.com/devendyyy/status/2032897305091911802" },
   { src: tweet2, alt: "XION – Redacted File breakdown", link: "https://x.com/devendyyy/status/2033607096030429625" },
 ];
