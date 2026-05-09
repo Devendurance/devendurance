@@ -47,7 +47,7 @@ const SubstackSection = () => {
     const el = scrollRef.current;
     if (!el) return;
     const cardWidth = el.querySelector("a")?.offsetWidth ?? 320;
-    el.scrollBy({ left: dir === "left" ? -(cardWidth + 20) : cardWidth + 20, behavior: "smooth" });
+    el.scrollBy({ left: dir === "left" ? -(cardWidth + 32) : cardWidth + 32, behavior: "smooth" });
   };
 
   return (
@@ -84,13 +84,13 @@ const SubstackSection = () => {
 
         <div
           ref={scrollRef}
-          className="flex gap-5 overflow-x-auto scrollbar-hide snap-x snap-mandatory pb-2 -mx-6 px-6"
+          className="flex gap-8 overflow-x-auto scrollbar-hide snap-x snap-mandatory py-3 -mx-6 px-6"
         >
           {posts.map((post, i) =>
             post.comingSoon ? (
               <div
                 key={i}
-                className="flex-shrink-0 w-[300px] md:w-[calc((100%-2.5rem)/3)] snap-start rounded-2xl border border-dashed border-border bg-card/50 p-7 flex items-center justify-center min-h-[220px]"
+                className="flex-shrink-0 w-[300px] md:w-[calc((100%-4rem)/3)] snap-start rounded-2xl border border-dashed border-border bg-card/50 p-7 flex items-center justify-center min-h-[220px]"
               >
                 <span className="text-muted-foreground text-sm font-semibold tracking-wider uppercase">
                   Coming Soon
@@ -102,7 +102,7 @@ const SubstackSection = () => {
                 href={post.link}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="group flex-shrink-0 w-[300px] md:w-[calc((100%-2.5rem)/3)] snap-start rounded-2xl border border-border bg-card p-7 hover:border-primary/40 transition-all duration-300 hover:-translate-y-1"
+                className="group flex-shrink-0 w-[300px] md:w-[calc((100%-4rem)/3)] snap-start rounded-2xl border border-border bg-card p-7 hover:border-primary/40 transition-all duration-300 hover:-translate-y-1"
               >
                 <p className="text-xs font-semibold tracking-wider uppercase text-primary mb-3">
                   Substack
