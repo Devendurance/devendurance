@@ -16,14 +16,14 @@ interface TweetItem {
 }
 
 const breakdowns: TweetItem[] = [
-  { src: tweet1, alt: "XION – 1 Billion Identities breakdown", link: "https://x.com/devendyyy/status/2032897305091911802" },
-  { src: tweet2, alt: "XION – Redacted File breakdown", link: "https://x.com/devendyyy/status/2033607096030429625" },
-  { src: tweet3, alt: "Injective – AI Innovations breakdown", link: "https://x.com/devendyyy/status/2032943280976179658" },
+  { src: tweet1, alt: "The attention economy is broken — XION & EarnOS breakdown", link: "https://x.com/i/status/2048883722699575445" },
+  { src: tweet2, alt: "XION Global Impact Accelerator breakdown", link: "https://x.com/i/status/2043760640485945477" },
+  { src: tweet3, alt: "XION Weekly Recap breakdown", link: "https://x.com/i/status/2046349037142724670" },
 ];
 
 const opinions: TweetItem[] = [
-  { src: tweet4, alt: "Alignment over persuasion", link: "https://x.com/devendyyy/status/2033505198828576768" },
-  { src: tweet5, alt: "A blockchain is not a product", link: "https://x.com/devendyyy/status/2032777537672069174" },
+  { src: tweet4, alt: "Why more content never fixes a broken narrative", link: "https://x.com/i/status/2046288627932803102" },
+  { src: tweet5, alt: "Why most KOL campaigns don't actually build demand", link: "https://x.com/i/status/2036397635838607727" },
   { src: tweet6, alt: "Fear, Pain, Desire, Convenience", link: "https://x.com/devendyyy/status/2032517680352149850" },
 ];
 
