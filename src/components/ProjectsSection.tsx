@@ -54,7 +54,7 @@ const ProjectsSection = () => {
     const el = scrollRef.current;
     if (!el) return;
     const cardWidth = el.querySelector("a")?.offsetWidth ?? 320;
-    el.scrollBy({ left: dir === "left" ? -(cardWidth + 20) : cardWidth + 20, behavior: "smooth" });
+    el.scrollBy({ left: dir === "left" ? -(cardWidth + 32) : cardWidth + 32, behavior: "smooth" });
   };
 
   return (
@@ -91,7 +91,7 @@ const ProjectsSection = () => {
 
         <div
           ref={scrollRef}
-          className="flex gap-5 overflow-x-auto scrollbar-hide snap-x snap-mandatory pb-2 -mx-6 px-6"
+          className="flex gap-8 md:gap-10 overflow-x-auto scrollbar-hide snap-x snap-mandatory py-3 -mx-6 px-6"
         >
           {projects.map((project) => (
             <a
