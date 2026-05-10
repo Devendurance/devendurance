@@ -1,6 +1,7 @@
 import AutoplayCarousel from "./AutoplayCarousel";
 import { useReveal } from "@/hooks/useReveal";
 import { Sprout } from "lucide-react";
+import { useEffect, useRef } from "react";
 
 type Slide =
   | { kind: "quote"; text: string }
@@ -34,13 +35,29 @@ const slides: Slide[] = [
 
 const PhilosophySection = () => {
   const { ref, className } = useReveal();
+  const wrapperRef = useRef<HTMLDivElement | null>(null);
+
+  useEffect(() => {
+    const handler = () => {
+      const el = wrapperRef.current;
+      if (!el) return;
+      el.classList.remove("philosophy-highlight");
+      // force reflow to restart animation
+      void el.offsetWidth;
+      el.classList.add("philosophy-highlight");
+      window.setTimeout(() => el.classList.remove("philosophy-highlight"), 2600);
+    };
+    window.addEventListener("highlight-philosophy", handler);
+    return () => window.removeEventListener("highlight-philosophy", handler);
+  }, []);
 
   return (
-    <section className="py-24 md:py-32 px-6 bg-background">
+    <section id="how-i-think" className="py-24 md:py-32 px-6 bg-background scroll-mt-24">
       <div ref={ref} className={`max-w-3xl mx-auto ${className}`}>
         <p className="text-muted-foreground text-xs font-medium tracking-[0.2em] uppercase text-center mb-12">
           How I Think
         </p>
+        <div ref={wrapperRef} className="rounded-2xl transition-shadow">
         <AutoplayCarousel
           items={slides.map((s, i) =>
             s.kind === "quote" ? (
@@ -73,6 +90,7 @@ const PhilosophySection = () => {
           )}
           interval={slides.map((s) => (s.kind === "card" ? 15000 : 5000))}
         />
+        </div>
       </div>
     </section>
   );
