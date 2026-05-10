@@ -8,6 +8,7 @@ import SocialProofSection from "@/components/SocialProofSection";
 import TweetsSection from "@/components/TweetsSection";
 import SubstackSection from "@/components/SubstackSection";
 import CtaFormSection from "@/components/CtaFormSection";
+import StickyCtaFab from "@/components/StickyCtaFab";
 
 const Index = () => {
   return (
@@ -38,9 +39,11 @@ const Index = () => {
           </p>
           <div className="flex flex-col sm:flex-row items-center gap-3">
             <a
-              href="https://solo.to/devendurance"
-              target="_blank"
-              rel="noopener noreferrer"
+              href="#contact"
+              onClick={(e) => {
+                e.preventDefault();
+                document.getElementById("contact")?.scrollIntoView({ behavior: "smooth", block: "start" });
+              }}
               className="btn-gradient inline-block font-semibold text-sm px-7 py-3 rounded-full"
             >
               Work With Me
@@ -57,7 +60,6 @@ const Index = () => {
         </div>
       </section>
 
-      <div id="contact"><CtaFormSection /></div>
       <div id="philosophy"><PhilosophySection /></div>
       <div id="who"><WhoThisIsForSection /></div>
       <div id="services"><ServicesSection /></div>
@@ -65,6 +67,9 @@ const Index = () => {
       <div id="social-proof"><SocialProofSection /></div>
       <div id="tweets"><TweetsSection /></div>
       <div id="substack"><SubstackSection /></div>
+      <div id="contact"><CtaFormSection /></div>
+
+      <StickyCtaFab />
 
       <footer className="border-t border-border py-10 px-6">
         <p className="text-muted-foreground text-xs text-center">
