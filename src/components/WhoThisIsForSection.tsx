@@ -18,6 +18,16 @@ const WhoThisIsForSection = () => {
     "Anyone expecting results without doing the inner work",
   ];
 
+  const handlePhilosophyClick = (e: React.MouseEvent<HTMLAnchorElement>) => {
+    e.preventDefault();
+    const target = document.getElementById("how-i-think");
+    if (!target) return;
+    target.scrollIntoView({ behavior: "smooth", block: "start" });
+    window.setTimeout(() => {
+      window.dispatchEvent(new CustomEvent("highlight-philosophy"));
+    }, 700);
+  };
+
   return (
     <section className="py-24 md:py-32 px-6">
       <div ref={ref} className={`max-w-5xl mx-auto ${className}`}>
@@ -123,6 +133,26 @@ const WhoThisIsForSection = () => {
               ))}
             </ul>
           </div>
+        </div>
+
+        <div className="mt-12 flex justify-center">
+          <a
+            href="#how-i-think"
+            onClick={handlePhilosophyClick}
+            className="group inline-flex items-center gap-2 px-7 py-3 rounded-md text-sm bg-card text-foreground transition-all duration-300 hover:-translate-y-0.5"
+            style={{
+              fontFamily: "'Herotenn', 'Manrope', sans-serif",
+              borderWidth: "1px",
+              borderStyle: "solid",
+              borderColor: "hsl(0 0% 100% / 0.15)",
+              boxShadow:
+                "inset 0 1px 0 0 hsl(0 0% 100% / 0.06), 0 0 18px 2px hsl(172 80% 40% / 0.2), 0 0 28px 4px hsl(217 91% 60% / 0.15)",
+              backdropFilter: "blur(8px)",
+            }}
+          >
+            <span>See My Philosophy</span>
+            <span aria-hidden className="transition-transform group-hover:-translate-y-0.5">↑</span>
+          </a>
         </div>
       </div>
     </section>

@@ -20,6 +20,20 @@
   }
 }
 
+@layer utilities {
+  @keyframes philosophy-pulse {
+    0%, 100% {
+      box-shadow: 0 0 0 0 hsl(var(--teal) / 0), 0 0 0 0 hsl(var(--royal) / 0);
+    }
+    50% {
+      box-shadow: 0 0 32px 6px hsl(var(--teal) / 0.45), 0 0 64px 12px hsl(var(--royal) / 0.3);
+    }
+  }
+  .philosophy-highlight {
+    animation: philosophy-pulse 1.2s ease-in-out 2;
+  }
+}
+
 /* Stitch-inspired Endy theme. All colors HSL. */
 
 @layer base {
