@@ -11,7 +11,10 @@ const CtaFormSection = () => {
           <p className="text-muted-foreground text-xs font-medium tracking-[0.2em] uppercase mb-4">
             Get in Touch
           </p>
-          <h2 className="text-foreground text-3xl sm:text-4xl md:text-5xl font-bold leading-tight tracking-tight mb-4">
+          <h2
+            className="text-foreground text-3xl sm:text-4xl md:text-5xl font-bold leading-tight tracking-tight mb-4"
+            style={{ fontFamily: "'Herotenn', 'Manrope', sans-serif" }}
+          >
             Let's talk before you spend.
           </h2>
           <p className="text-muted-foreground text-base md:text-lg">
