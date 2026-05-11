@@ -1,5 +1,4 @@
 import { useState } from "react";
-import { supabase } from "@/integrations/supabase/client";
 import { toast } from "sonner";
 
 const SERVICE_OPTIONS = [
@@ -10,8 +9,10 @@ const SERVICE_OPTIONS = [
   "Just Saying Hi",
 ];
 
+const WEB3FORMS_ACCESS_KEY = "b42c34a3-58d0-4fb7-be5b-8e95e5b4b672";
+
 const ContactForm = () => {
-  const [form, setForm] = useState({ service: "", name: "", email: "", message: "" });
+  const [form, setForm] = useState({ service: "", name: "", email: "", message: "", botcheck: "" });
   const [loading, setLoading] = useState(false);
   const [submitted, setSubmitted] = useState(false);
 
@@ -23,19 +24,31 @@ const ContactForm = () => {
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
+    if (form.botcheck) return; // honeypot
     if (!form.service || !form.name || !form.email || !form.message) {
       toast.error("Please fill in all fields.");
       return;
     }
     setLoading(true);
     try {
-      const { error } = await supabase.from("contact_submissions").insert({
-        name: form.name.trim(),
-        email: form.email.trim(),
-        service: form.service,
-        message: form.message.trim(),
+      const res = await fetch("https://api.web3forms.com/submit", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          Accept: "application/json",
+        },
+        body: JSON.stringify({
+          access_key: WEB3FORMS_ACCESS_KEY,
+          name: form.name.trim(),
+          email: form.email.trim(),
+          service: form.service,
+          message: form.message.trim(),
+          botcheck: form.botcheck,
+          subject: `New inquiry from ${form.name.trim()} — ${form.service}`,
+        }),
       });
-      if (error) throw error;
+      const data = await res.json();
+      if (!res.ok || !data.success) throw new Error(data.message || "Submission failed");
       setSubmitted(true);
       toast.success("Message sent! I'll be in touch soon.");
     } catch {
@@ -47,12 +60,26 @@ const ContactForm = () => {
 
   if (submitted) {
     return (
-      <div className="text-center py-10">
-        <p className="text-foreground text-xl font-bold">
-          Thanks for reaching out 🎉
+      <div
+        className="text-center py-10 px-6 rounded-2xl border"
+        style={{
+          background:
+            "linear-gradient(135deg, hsl(0 0% 100% / 0.04), hsl(0 0% 100% / 0.01))",
+          borderColor: "hsl(0 0% 100% / 0.12)",
+          backdropFilter: "blur(14px)",
+          WebkitBackdropFilter: "blur(14px)",
+          boxShadow:
+            "inset 0 1px 0 0 hsl(0 0% 100% / 0.06), 0 0 24px 2px hsl(172 80% 40% / 0.18)",
+        }}
+      >
+        <p
+          className="text-foreground text-2xl font-bold"
+          style={{ fontFamily: "'Herotenn', 'Manrope', sans-serif" }}
+        >
+          Strategy Received.
         </p>
-        <p className="text-muted-foreground text-sm mt-2">
-          I'll review your message and get back to you shortly.
+        <p className="text-muted-foreground text-sm mt-3">
+          I'll reach out within 24 hours.
         </p>
       </div>
     );
@@ -63,6 +90,18 @@ const ContactForm = () => {
 
   return (
     <form onSubmit={handleSubmit} className="space-y-4 text-left">
+      <input
+        type="checkbox"
+        name="botcheck"
+        checked={!!form.botcheck}
+        onChange={(e) =>
+          setForm((prev) => ({ ...prev, botcheck: e.target.checked ? "1" : "" }))
+        }
+        tabIndex={-1}
+        autoComplete="off"
+        style={{ position: "absolute", left: "-9999px", opacity: 0, pointerEvents: "none" }}
+        aria-hidden="true"
+      />
       <div>
         <label htmlFor="service" className="block text-xs font-medium mb-2 text-muted-foreground">
           What brought you here?
@@ -122,7 +161,7 @@ const ContactForm = () => {
         disabled={loading}
         className="w-full bg-primary text-primary-foreground font-semibold text-sm px-6 py-3.5 rounded-xl hover:opacity-90 transition-opacity disabled:opacity-50"
       >
-        {loading ? "Sending…" : "Send Message"}
+        {loading ? "Sending Strategy..." : "Send Message"}
       </button>
     </form>
   );
