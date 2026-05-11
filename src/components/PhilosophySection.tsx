@@ -9,6 +9,17 @@ type Slide =
 
 const slides: Slide[] = [
   {
+    kind: "card",
+    title: "Why Pre-Growth?",
+    body: "Most founders spend on marketing before they're ready. The narrative isn't clear, the audience isn't defined, and the product still means different things to different people. Money hits a broken structure and just leaks out. Pre-growth is about fixing that before a single dollar is spent on amplification — because growth was never the problem. Premature growth was.",
+    accent: true,
+  },
+  {
+    kind: "card",
+    title: "My Origin Story",
+    body: "I started out as a general Web3 writer and marketer — doing content, campaigns, and whatever else early ecosystems needed. But working with projects like Injective and XION, I kept seeing the same pattern: good teams spending on growth before the foundation existed. That kept bothering me. So I stopped trying to be a full-service guy and went deep on the one thing nobody was fixing — the structure that has to exist before marketing works.",
+  },
+  {
     kind: "quote",
     text: "Growth is not a tactic. It's what happens when clarity, alignment, and belief are already in place.",
   },
@@ -19,17 +30,6 @@ const slides: Slide[] = [
   {
     kind: "quote",
     text: "I don't do marketing. I build the conditions under which marketing actually works.",
-  },
-  {
-    kind: "card",
-    title: "Why Pre-Growth?",
-    body: "Most founders spend on marketing before they're ready. The narrative isn't clear, the audience isn't defined, and the product still means different things to different people. Money hits a broken structure and just leaks out. Pre-growth is about fixing that before a single dollar is spent on amplification — because growth was never the problem. Premature growth was.",
-  },
-  {
-    kind: "card",
-    title: "The Endy Origin",
-    body: "I started out as a general Web3 writer and marketer — doing content, campaigns, and whatever else early ecosystems needed. But working with projects like Injective and XION, I kept seeing the same pattern: good teams spending on growth before the foundation existed. That kept bothering me. So I stopped trying to be a full-service guy and went deep on the one thing nobody was fixing — the structure that has to exist before marketing works.",
-    accent: true,
   },
 ];
 
@@ -54,8 +54,11 @@ const PhilosophySection = () => {
   return (
     <section id="how-i-think" className="py-24 md:py-32 px-6 bg-background scroll-mt-24">
       <div ref={ref} className={`max-w-3xl mx-auto ${className}`}>
-        <p className="text-muted-foreground text-xs font-medium tracking-[0.2em] uppercase text-center mb-12">
-          How I Think
+        <p
+          className="text-muted-foreground text-xs font-medium tracking-[0.2em] uppercase text-center mb-12"
+          style={{ fontFamily: "'Herotenn', 'Manrope', sans-serif" }}
+        >
+          My Philosophy & Origin Story
         </p>
         <div ref={wrapperRef} className="rounded-2xl transition-shadow">
         <AutoplayCarousel
@@ -88,7 +91,7 @@ const PhilosophySection = () => {
               </div>
             )
           )}
-          interval={slides.map((s) => (s.kind === "card" ? 15000 : 5000))}
+          interval={slides.map((s, i) => (i === 0 ? 10000 : s.kind === "card" ? 12000 : 5000))}
         />
         </div>
       </div>
