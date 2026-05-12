@@ -21,7 +21,7 @@ const CtaSection = () => {
         {/* Secondary CTAs */}
         <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
           <a
-            href="https://calendly.com/devendurance/connect-and-share-ideas"
+            href="https://calendly.com/devendurance/30mins-with-endurance"
             target="_blank"
             rel="noopener noreferrer"
             className="inline-block bg-primary text-primary-foreground font-medium text-sm px-8 py-3 rounded-md hover:opacity-90 transition-opacity"
