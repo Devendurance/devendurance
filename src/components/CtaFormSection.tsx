@@ -28,7 +28,7 @@ const CtaFormSection = () => {
 
         <div className="flex flex-col sm:flex-row items-center justify-center gap-3 mt-8">
           <a
-            href="https://calendly.com/devendurance/connect-and-share-ideas"
+            href="https://calendly.com/devendurance/30mins-with-endurance"
             target="_blank"
             rel="noopener noreferrer"
             className="inline-block bg-primary text-primary-foreground font-semibold text-sm px-7 py-3 rounded-full hover:opacity-90 transition-opacity"
